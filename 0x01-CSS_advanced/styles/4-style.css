@@ -24,7 +24,7 @@
     h4,
     h5,
     h6 {
-        font-style: var(--font-family-title);
+        font-family: var(--font-family-title);
     }
 
     a {
