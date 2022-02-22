@@ -26,7 +26,7 @@
 
 	body {
 		color: var(--text-color);
-		font-style: var(--font-family-base);
+		font-family: var(--font-family-base);
 		font-size: var(--font-size-medium);
 		font-weight: var(--font-weight-regular);
 		line-height: var(--line-height-base);
@@ -38,7 +38,7 @@
 	h4,
 	h5,
 	h6 {
-		font-style: var(--font-family-title);
+		font-family: var(--font-family-title);
 		font-weight: var(--font-weight-bold);
 	}
 
