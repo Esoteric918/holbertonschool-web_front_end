@@ -178,8 +178,8 @@
 	}
 
 	.col-1-2 {
-		width: 50%;
 		float: left;
+		width: 50%;
 		padding: 0.5rem;
 	}
 
@@ -188,6 +188,6 @@
 		font-size: var(--font-size-small);
 		color: var(--text-color);
 	}
-	footer ul {
+	.footer ul {
 		text-align: right;
 	}
