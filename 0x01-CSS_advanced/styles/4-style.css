@@ -15,7 +15,7 @@
 
     body {
         color: var(--text-color);
-        font-style: var(--font-family-base);
+        font-family: var(--font-family-base);
     }
 
     h1,
