@@ -17,6 +17,7 @@
 	--line-height-small: 1.2;
 	--line-height-base: 1.5;
 	--line-height-big: 1.8;
+	--section-header-align: center;
 }
 
 	html {
@@ -44,17 +45,21 @@
 
 	a {
 		color: var(--text-color);
-        text-decoration: none;
+		text-decoration: none;
 	}
 
-	visually-hidden {
+	.visually-hidden {
 		display: none;
 	}
 
-	card-category {
+	.card-category {
 		color: var(--color-primary);
 	}
 
-	section-tagline {
+	.section-header{
+		text-align: var(--section-header-align)
+	}
+
+	.section-tagline {
 		color: var(--color-primary);
 	}
