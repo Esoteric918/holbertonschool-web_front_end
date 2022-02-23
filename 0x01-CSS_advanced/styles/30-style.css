@@ -157,19 +157,19 @@
 	color: var(--color-primary);
   }
 
-  .card-outer .card-work {
+  .card-work .card-outer {
 	  position: relative;
 	  overflow: hidden;
   }
 
-  .card-image .card-work img {
+  .card-work .card-image img {
 	  height: 30rem;
 	  width: 100%;
 	  object-fit: cover;
 	  vertical-align: bottom;
   }
 
-  .card-inner .card-work {
+  .card-work .card-inner {
 	  position: absolute;
 	  top: -0.1rem;
 	  left: -0.1rem;
