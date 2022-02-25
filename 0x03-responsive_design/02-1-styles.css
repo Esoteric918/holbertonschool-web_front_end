@@ -176,7 +176,7 @@
 	clip: rect(1px, 1px, 1px, 1px);
 	white-space: nowrap;
   }
-  .main img {
+  main img {
 	  width: 100%;
 	  height: auto;
   }
@@ -187,7 +187,7 @@
 	  ============================= */
 
   .container {
-	width: 100%;
+	max-width: 960px;
 	margin-left: auto;
 	margin-right: auto;
   }
@@ -283,7 +283,7 @@
 	width: 100%;
   }
 
-  @media screen and (max-width: 767px) {
+  @media (max-width: 767px) {
 	  .navbar-menu {
 		  display: none;
 	  }
@@ -424,10 +424,10 @@
 	  ============================= */
 
 	@media screen and (max-width: 767px) {
-  .section-latest-news .row {
-	flex-direction: column;
+    .section-latest-news .row {
+	    flex-direction: column;
   }
-
+}
   /* Section SERVICES
 	  ============================= */
 
