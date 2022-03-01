@@ -1,0 +1,11 @@
+/*  first children of the body */
+
+$text_color_boby: #3D3D3D;
+$text_elem_color: #FF0000;
+
+body {
+    color: $text_color_boby;
+    > .red {
+        color: $text_elem_color;
+    }
+}

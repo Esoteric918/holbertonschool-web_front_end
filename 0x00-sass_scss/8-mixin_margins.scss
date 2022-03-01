@@ -1,0 +1,14 @@
+/* use mixin to assign margins */
+
+@mixin marg_set ($value) {
+    margin-left: $value;
+    margin-right: $value;
+
+}
+body {
+    @include marg_set(10px);
+}
+
+div {
+    @include marg_set(15px);
+}
