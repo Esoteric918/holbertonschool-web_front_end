@@ -1,0 +1,7 @@
+/* for loop set H* tags */
+
+@for $var from 1 through 5 {
+    h#{$var} {
+        font-size: #{$var}px;
+    }
+}
