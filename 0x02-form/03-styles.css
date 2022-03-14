@@ -672,16 +672,16 @@
 
     fieldset {
         display: flex;
-        flex-direction: column;
         justify-content: flex-start;
+        flex-direction: column;
         border: none;
         padding: 0 0 2rem;
     }
 
     label {
-        cursor: pointer;
         display: block;
-        font-size: 1.4rem;
+        cursor: pointer;
         white-space: nowrap;
+        font-size: 1.4rem;
         padding: 0 0 .5rem;
     }
