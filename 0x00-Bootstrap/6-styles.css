@@ -27,10 +27,10 @@
 
 /* Links restyled */
 
-/* .card-deck a, a:hover, a:focus {
-    background-color: #E0003C ;
-    border-radius: 1rem;
-} */
+a, a:hover, a:focus {
+    color: #E0003C ;
+}
+
 /* Cards Styles Redefined
    ============================================= */
 
