@@ -4,9 +4,14 @@
     background-color: #E0003C;
 }
 
+.border-bottom {
+    border-bottom-color: #E0003C !important;
+}
+
 /* button style redfined */
 .btn-primary{
     background-color: #E0003C !important;
+
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -19,8 +24,8 @@
     border-color: #E0003C;
 }
 .btn-outline-primary:hover,
-.btn-outline-primary:active {
-  border-color: #E0003C;
+.btn-outline-primary:active, .btn-outline-primary:focus {
+  border-color: #E0003C !important;
   color: #FFFFFF !important;
   background-color: #E0003C !important;
 }
@@ -28,7 +33,11 @@
 /* Links restyled */
 
 a, a:hover, a:focus {
-    color: #E0003C ;
+    color: #E0003C !important;
+}
+
+a.text-dark:hover, a.text-dark:active {
+    color: #E0003C !important;
 }
 
 /* Cards Styles Redefined
