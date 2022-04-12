@@ -15,9 +15,9 @@ function outer() {
 
   const inception = () => {
     alert(`${globalVariable} ${course} ${exclamation}`);
-    inception();
     };
-   inner();
+    inception();
   };
-  outer();
+   inner();
 };
+outer();
