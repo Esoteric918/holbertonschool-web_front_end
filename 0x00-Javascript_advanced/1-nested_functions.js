@@ -5,7 +5,7 @@
  */
 const globalVariable = 'Welcome';
 
-const outer =() => {
+function outer() {
   alert(`${globalVariable}`);
   const course = Holberton;
 
