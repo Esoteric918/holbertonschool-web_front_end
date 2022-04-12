@@ -3,9 +3,9 @@
  *
  *
  */
-const globalVariable = Welcome;
+const globalVariable = 'Welcome';
 
-function outer() {
+const outer =() => {
   alert(`${globalVariable}`);
   const course = Holberton;
 
