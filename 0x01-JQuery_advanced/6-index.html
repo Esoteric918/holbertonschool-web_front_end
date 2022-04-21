@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+	<meta charset="utf-8" />
+	<title>Task 0</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+		integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<script type="application/javascript">
+		function createFamilyTree() {
+			$('body').append('<table></table>');
+			$('table').append('<thead></thead>');
+			$('thead').append('<th></th>', '<th></th>');
+			$('th').eq(0).append('<h1>Firstname</h1>');
+			$('th').eq(1).append('<h1>Lastname</h1>')
+			$('table').append('<tbody></tbody>');
+		}
+
+		function addNewMember(firstName, lastName, position) {
+			$('tbody').append(
+				`<tr>
+				  <td>${firstName}</td>
+				  <td>${lastName}</td>
+				  <td>(x)</td>
+				</tr>`);
+			position == 'before'
+				? $('tbody').prepend(`<tr>
+										<td>${firstName}</td>
+										<td>${lastName}</td>
+										<td>(x)</td>
+									</tr>`)
+				: $('tbody').append(`<tr>
+										<td>${firstName}</td>
+										<td>${lastName}</td>
+										<td>(x)</td>
+									</tr>`)
+
+			$('tr :last-child').click( (event) => {
+				$(event.currentTarget).parent().remove()});
+
+			$('tr :last-child').css('background-color', 'orange');
+
+		}
+		function createForm () {
+			$('table').before(
+						`<form>
+							<input type=text></input>
+								<input type=text></input>
+							<select>
+								<option value = "before"> Before </option>
+								<option value = "after"> After </option>
+							</select>
+							<input type=submit></input>
+						</form>`
+			)
+		// 	$('form').submit(addNewMember(
+
+			// 		$('input:nth-of-type(1n)').text()
+			// 	))
+
+
+		}
+
+		createFamilyTree();
+		createForm();
+		$(document).ready( () => {
+
+			$('form').submit(() => {
+				console.log("my balls")
+			});
+			});
+		function test() {
+			console.log($('input:nth-of-type(1n)').val(),"test test");
+		}
+	</script>
+
+</body>
+
+</html>
