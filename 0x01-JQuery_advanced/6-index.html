@@ -22,23 +22,15 @@
 		}
 
 		function addNewMember(firstName, lastName, position) {
-			$('tbody').append(
-				`<tr>
+			var content = `<tr>
 				  <td>${firstName}</td>
 				  <td>${lastName}</td>
 				  <td>(x)</td>
-				</tr>`);
+				</tr>`
+			$('tbody').append(content);
 			position == 'before'
-				? $('tbody').prepend(`<tr>
-										<td>${firstName}</td>
-										<td>${lastName}</td>
-										<td>(x)</td>
-									</tr>`)
-				: $('tbody').append(`<tr>
-										<td>${firstName}</td>
-										<td>${lastName}</td>
-										<td>(x)</td>
-									</tr>`)
+				? $('tbody').prepend(content)
+				: $('tbody').append(content)
 
 			$('tr :last-child').click( (event) => {
 				$(event.currentTarget).parent().remove()});
@@ -58,10 +50,7 @@
 							<input type=submit></input>
 						</form>`
 			)
-		// 	$('form').submit(addNewMember(
 
-			// 		$('input:nth-of-type(1n)').text()
-			// 	))
 
 
 		}
@@ -69,16 +58,21 @@
 		createFamilyTree();
 		createForm();
 		$(document).ready( () => {
+			$('form').submit(addNewMember(
+				$('input:nth-of-type(1n)').val(),
+				$('input:nth-of-type(2n)').val(),
+				$('select').val()
+		))
 
-			$('form').submit(() => {
-				console.log("my balls")
-			});
-			});
-		function test() {
-			console.log($('input:nth-of-type(1n)').val(),"test test");
+
 		}
 	</script>
-
+// // 	$('form').submit(() => {
+		// // 		console.log("my balls")
+		// // 	});
+		// // 	});
+		// // function test() {
+		// // 	console.log($('input:nth-of-type(1n)').val(),"test test");
 </body>
 
 </html>
