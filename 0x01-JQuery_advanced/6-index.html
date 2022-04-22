@@ -53,11 +53,14 @@
 			)
 
 			$('input[type="submit"]').click(() => {
-				var firstName = $('input').first().val();
-				var lastName = $('input:nth-of-type(2)').val();
+				var firstNameinput = $('input').first();
+				var lastNameinput = $('input:nth-of-type(2)');
 				var position = $('select').val();
+				var firstName = firstNameinput.val();
+				var lastName = lastNameinput.val();
 				addNewMember(firstName, lastName, position);
-				$('input[type="submit"]').value = ""
+				firstNameinput.val('');
+				lastNameinput.val('');
 			});
 
 		}
