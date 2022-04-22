@@ -23,56 +23,53 @@
 
 		function addNewMember(firstName, lastName, position) {
 			var content = `<tr>
-				  <td>${firstName}</td>
-				  <td>${lastName}</td>
-				  <td>(x)</td>
-				</tr>`
-			$('tbody').append(content);
-			position == 'before'
-				? $('tbody').prepend(content)
-				: $('tbody').append(content)
+								<td>${firstName}</td>
+								<td>${lastName}</td>
+								<td>(x)</td>
+							</tr>`
 
-			$('tr :last-child').click( (event) => {
-				$(event.currentTarget).parent().remove()});
+			position == 'before' ?
+				$('tbody').prepend(content) :
+				$('tbody').append(content)
+
+			$('tr :last-child').click((event) => {
+				$(event.currentTarget).parent().remove()
+			});
 
 			$('tr :last-child').css('background-color', 'orange');
 
 		}
-		function createForm () {
+
+		function createForm() {
 			$('table').before(
-						`<form>
-							<input type=text></input>
-								<input type=text></input>
-							<select>
-								<option value = "before"> Before </option>
-								<option value = "after"> After </option>
-							</select>
-							<input type=submit></input>
-						</form>`
+				`<input type=text></input>
+						<input type=text></input>
+						<select>
+							<option value = "before"> Before </option>
+							<option value = "after"> After </option>
+						</select>
+						<input type=submit></input>
+						`
 			)
 
-
+			$('input[type="submit"]').click(() => {
+				var firstName = $('input').first().val();
+				var lastName = $('input:nth-of-type(2)').val();
+				var position = $('select').val();
+				addNewMember(firstName, lastName, position);
+				$('input[type="submit"]').value = ""
+			});
 
 		}
-
 		createFamilyTree();
 		createForm();
-		$(document).ready( () => {
-			$('form').submit(addNewMember(
-				$('input:nth-of-type(1n)').val(),
-				$('input:nth-of-type(2n)').val(),
-				$('select').val()
-		))
+		// $(document).ready(function () {
 
-
-		}
+		// 	createFamilyTree();
+		// 	createForm();
+		// });
 	</script>
-// // 	$('form').submit(() => {
-		// // 		console.log("my balls")
-		// // 	});
-		// // 	});
-		// // function test() {
-		// // 	console.log($('input:nth-of-type(1n)').val(),"test test");
+
 </body>
 
 </html>
