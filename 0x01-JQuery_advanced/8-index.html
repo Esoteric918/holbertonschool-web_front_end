@@ -21,7 +21,7 @@
 				<input type="text"></input>
 				<input type="submit"></input>
 
-				<ul class="pagination"></ul>
+				<ul id="pagination"></ul>
 				`);
 			$('input[type="submit"]').click( () => {
 				queryWikipedia($('input[type="text"]').val());
@@ -29,32 +29,36 @@
 		}
 
 		function addNewArticle(id, title, snippet) {
-            $('ul').append('<li></li>');
-            $('li').last().append(`<p>
-                                    <span>${id}</span> - <b>${title}</b>
-                                    </p>
-                                    <p>${snippet}</p>
-                                    `);
+            $('ul').append(`<li>
+                            <p><span>${id} - </span><b>${title}</b></p>
+                            <p>${snippet}</p>
+                            </li>
+                            `);
+
         }
 
 		function queryWikipedia(search, offset = 0) {
+            console.log(search, offset)
+            $('ul').first().html('');
 
 			$.ajax({
-				url: `https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=${search}&format=json&sroffset=${offset}`,				type: 'GET',
+				url: `https://en.wikipedia.org/w/api.php?action=query&origin=*&list=search&srsearch=${search}&format=json&sroffset=${offset}`,
+                type: 'GET',
 				dataType: 'jsonp',
 				success: function (data) {
-					for (let item of data.query.search) {
+                    console.log(data);
+					for (item of data.query.search) {
 						addNewArticle(item.pageid, item.title, item.snippet);
 					}
-					buildPagination(data.query.searchinfo.totalhits, 10, data.continue.sroffset);
+					buildPagination(data.query.searchinfo.totalhits, 10, offset);
 				}
 			});
 		}
-		function buildPagination(numberOfItems, currentOffset, itemsPerPag) {
-			var numPage = Math.ceil(numberOfItems / itemsPerPag);
-			var currentPage = Math.ceil(currentOffset / itemsPerPag);
-			$('.pages').empty();
-			// $('.pages').remove();
+		function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+			var numPage = Math.ceil(numberOfItems / itemsPerPage);
+			var currentPage = Math.ceil(currentOffset / itemsPerPage);
+
+            $('.pages').remove();
 			$('body').append(`<ul class="pages"></ul>`);
 
 			for (let page = 1; page <= numPage; ++page) {
@@ -79,7 +83,7 @@
 				});
 
 			$('a').click(function () {
-				$('ul').html("");
+				$('ul').first().html("");
 				queryWikipedia($('input[type="text"]').val(), $(this).text() * itemsPerPage);
 			});
 		};
