@@ -6,40 +6,48 @@
 	<meta charset="utf-8" />
 	<title>Task 10</title>
 
-	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
 	<script type="application/javascript">
-		$( document ).ready(function() {
+		$(document).ready(function () {
 			listPost();
 		});
 
-		const addPostRow = (data) => {
-			$('body').append(
-				`<p>
-					<span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}R</span>
-				</p>`
-			)
-		}
-		const listPost = () => {
-			$.ajax({
-				url: 'http://localhost:3000/posts',
-				type : 'GET',
-				dataType : 'json',
-				success : function (data) {
-						data.forEach(element => {
-							addPostRow(element);
-					});
-				},
-				error: function (Server) {
-                        alert('Server Error');
-				}
+		function addPostRow(data) {
+			console.log(data);
+			data.forEach(element => {
+				$('body').append(
+					`<p>
+						<span>Post created with id ${element.id}, title: ${element.title}, author: ${element.author}</span>
+					</p>`);
 			});
+		}
+		function listPost() {
+			$.get('http://localhost:3000/posts', (result) => {
+				addPostRow(result);
+			}).fail(() => {
+				alert('Server Error')
+			})
 		};
 	</script>
 
 </body>
 
 </html>
+<!-- // $.ajax({
+			// 	url: 'http://localhost:3000/posts',
+			// 	type : 'GET',
+			// 	dataType : 'json',
+			// 	success : function (data) {
+			// 			data.forEach(element => {
+			// 				addPostRow(element);
+			// 		});
+			// 	},
+			// 	error: function (Server) {
+			//             alert('Server Error');
+			// 	}
+			// }); -->
