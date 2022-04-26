@@ -6,20 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Task 1 Cookie exp date</title>
-	<script type="text/javescript" src="src/index.js"></script>
-</head>
-
-<body>
-	<div>
-		<h1>Login to the website</h1>
-		<input type="text" id="firstname" placeholder="Firstname">
-		<input type="text" id="email" placeholder="Email">
-		<button onclick="setcookies()">Log me in</button>
-		<h1>Cookies</h1>
-		<button onclick="setcookies()">Show the cookies</button>
-	</div>
 	<script type="text/javascript">
-		function setcookies(days) {
+		function setcookies() {
 
 			const firstname = document.getElementById("firstname").value;
 			const email = document.getElementById("email").value;
@@ -43,9 +31,22 @@
 			// Set inner to show cookies
 			para.innerHTML = `Cookies: ${document.cookie}`
 			// Append to end of body
+			console.log(`Cookies: ${document.cookie}`)
 			document.body.appendChild(para);
 		}
 	</script>
+</head>
+
+<body>
+	<div>
+		<h1>Login to the website</h1>
+		<input type="text" id="firstname" placeholder="Firstname">
+		<input type="text" id="email" placeholder="Email">
+		<button type="button" onclick="setCookies()">Log me in</button>
+		<h1>Cookies</h1>
+		<button type="button" onclick="showCookies()">Show the cookies</button>
+	</div>
+
 </body>
 
 </html>

@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 0 Create cookies</title>
-    <script type="text/javescript" src="src/index.js"></script>
-</head>
-<body>
-    <div>
-        <h1>Login to the website</h1>
-        <input type="text" id="firstname" placeholder="Firstname">
-        <input type="text" id="email" placeholder="Email">
-        <button onclick="setcookies()">Log me in</button>
-        <h1>Cookies</h1>
-        <button onclick="setcookies()">Show the cookies</button>
-    </div>
     <script type="text/javascript">
         function setcookies() {
             const firstname = document.getElementById("firstname").value;
@@ -30,5 +20,18 @@
             document.body.appendChild(para);
         }
     </script>
+</head>
+
+<body>
+    <div>
+        <h1>Login to the website</h1>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button onclick="setCookies()">Log me in</button>
+        <h1>Cookies</h1>
+        <button onclick="showCookies()">Show the cookies</button>
+    </div>
+
 </body>
+
 </html>
