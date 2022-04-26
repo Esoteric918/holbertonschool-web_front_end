@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+	<meta charset="utf-8" />
+	<title>Task 12</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.js"
+		integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<script type="application/javascript">
+		$(document).ready(function () {
+			listPost();
+			buildForm();
+		});
+
+		function addPostRow(data) {
+			if (Array.isArray(data)) {
+				for (post of data) {
+					$('body').append(`<p id="row-${id}">
+						<span class="delete">(delete)</span>
+						<span>Post created with id ${post.id}, title: ${post.title}, author: ${post.author}</span></p>`);
+				}
+			} else $('body').append(
+				`<p><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>`);
+			$(`#row-${id}') .delete`).click(function () {
+				deletePost(id);
+			});
+		}
+
+		function deletePost(id) {
+			$.ajax({
+				type: "DELETE",
+				url: `http://localhost:3000/posts/${id}`,
+				success: () => {
+					$(`#${id}`).parent("p").remove()
+				},
+			}).fail(() => alert("Post was not deleted"))
+			$(this).parent("p").remove()
+		}
+
+		function listPost() {
+			$.get('http://localhost:3000/posts', (result) => {
+				addPostRow(result);
+			}).fail(() => {
+				alert('Server Error')
+			})
+
+		};
+
+		function buildForm() {
+			$('body').append(`<form>
+								<div>
+									<label for="author">Author</label>
+									<input type="text" id="author" />
+								</div>
+								<div>
+									<label for="title">Title</label>
+									<textarea id="title"></textarea>
+									<input type="submit" value="Submit" />
+								</div>
+							</form>`);
+			$('form').submit((action) => {
+				action.preventDefault();
+				sendForm();
+			});
+		}
+
+		function sendForm() {
+			$('form').after('<div class="text">About to send the query to the API</div>');
+			var data = {
+				author: $('input').first().val(),
+				title: $('textarea').first().val()
+			}
+			$.post('http://localhost:3000/posts', data, (result) => {
+				addPostRow(result);
+			}).fail(() => {
+				alert('Error sending the POST query');
+			});
+
+		}
+	</script>
+</body>
+
+</html>
