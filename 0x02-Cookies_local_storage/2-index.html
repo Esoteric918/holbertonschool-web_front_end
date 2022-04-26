@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 1 Cookie exp date</title>
+    <script type="text/javascript">
+        function setcookies() {
+            const firstnameIput = document.getElementById("firstname").value;
+            const emailInput = document.getElementById("email").value;
+            // create new data obj
+            // Set time and add 10 days to current time
+            // Convert to string with correct time zone
+            const expDate = new Date();
+            expDate.setTime(expDate.getTime() + (10 * 24 * 60 * 60 * 1000));
+            var expire = `expires="${expDate.toUTCString()}`;
+
+            //Set cookies to expire
+            document.cookie = `firstname=${firstname}`;`${expire};path=/`;
+            document.cookie = `email=${email}`;`${expire};path=/`;
+        }
+
+        function showCookies() {
+            //Create p element
+            // Set inner to show cookies
+            // Append to end of body
+            const para = document.createElement('p');
+            para.innerHTML = `Email: ${getCookie('email')} - Firstname: ${getCookie('firstname')}`
+            document.body.appendChild(para);
+        }
+        function getCookie(name) {
+            // If passed in string value, get value from element
+            if (name) {
+                return (document.getElementById(name).value);
+            } else {
+                return ('');
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <h1>Login to the website</h1>
+        <input type="text" id="firstname" placeholder="Firstname">
+        <input type="text" id="email" placeholder="Email">
+        <button type="button" onclick="setCookies() ">Log me in</button>
+        <h1>Cookies</h1>
+        <button type="button" onclick="showCookies() `${document.getElementById('firstname').value = ''}`">Show the cookies</button>
+
+
+
+    </div>
+
+</body>
+
+</html>
