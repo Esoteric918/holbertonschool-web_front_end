@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 1 Cookie exp date</title>
+	<script type="text/javescript" src="src/index.js"></script>
+</head>
+
+<body>
+	<div>
+		<h1>Login to the website</h1>
+		<input type="text" id="firstname" placeholder="Firstname">
+		<input type="text" id="email" placeholder="Email">
+		<button onclick="setcookies()">Log me in</button>
+		<h1>Cookies</h1>
+		<button onclick="setcookies()">Show the cookies</button>
+	</div>
+	<script type="text/javascript">
+		function setcookies(days) {
+
+			const firstname = document.getElementById("firstname").value;
+			const email = document.getElementById("email").value;
+			// create new data obj
+			const expDate = new Date();
+			// Set time and add 10 to current time
+			expDate.setTime(expDate.getTime() + (10 * 24 * 60 * 60 * 1000));
+			//Convert to string with correct time zone
+			var expire = "expires=" + expDate.toUTCString();
+
+			//Set cookies to expire
+			document.cookie = `firstname=${firstname}`;
+			`${expire};path=/`;
+			document.cookie = `email=${email}`;
+			`${expire};path=/`;
+		}
+
+		function showCookies() {
+			//Create p element
+			const para = document.createElement('p');
+			// Set inner to show cookies
+			para.innerHTML = `Cookies: ${document.cookie}`
+			// Append to end of body
+			document.body.appendChild(para);
+		}
+	</script>
+</body>
+
+</html>
