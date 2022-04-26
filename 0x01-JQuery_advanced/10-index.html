@@ -18,7 +18,6 @@
 		});
 
 		function addPostRow(data) {
-			console.log(data);
 			data.forEach(element => {
 				$('body').append(
 					`<p>
@@ -31,8 +30,8 @@
 				addPostRow(result);
 			}).fail(() => {
 				alert('Server Error')
-			})
-		};
+			});
+		}
 	</script>
 
 </body>
