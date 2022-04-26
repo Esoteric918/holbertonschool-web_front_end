@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task 0 Create cookies</title>
+    <script type="text/javescript" src="src/index.js"></script>
 </head>
 <body>
     <div>
@@ -21,13 +22,13 @@
             const email = document.getElementById("email").value;
             document.cookie = `firstname=${firstname}`;
             document.cookie = `email=${email}`;
-        };
+        }
 
         function showCookies() {
             const para = document.createElement('p');
             para.innerHTML = `Cookies: ${document.cookie}`
-            document.body.append(para);
-        };
+            document.body.appendChild(para);
+        }
     </script>
 </body>
 </html>
