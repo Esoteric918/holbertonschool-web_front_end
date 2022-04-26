@@ -1,4 +1,4 @@
 *.scssc*
-# *.json*
+*.json*
 *.vscode*
 *node_modules*
