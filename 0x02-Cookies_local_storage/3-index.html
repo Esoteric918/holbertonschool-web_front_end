@@ -85,7 +85,7 @@
 				// adds h1 elem and text w/style
 				let new_h = document.createElement('h1');
 				new_h.innerHTML = `Welcome ${getCookie('firstname')}
-				<a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px; line-style-type: none;"
+				<a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px; text-decoration: none; color: black;"
 					 onclick="deleteCookiesAndShowForm();;">(logout)</a>`
 				document.body.appendChild(new_h);
 				hideForm();
