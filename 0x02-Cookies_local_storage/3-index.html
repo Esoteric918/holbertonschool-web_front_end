@@ -8,12 +8,12 @@
 	<title>Task 1 Cookie exp date</title>
 	<script type="text/javascript">
 		function setCookies() {
-			const firstnameIput = document.getElementById("firstname").value;
-			const emailInput = document.getElementById("email").value;
-			// create new data obj
-			// Set time and add 10 days to current time
-			// Convert to string with correct time zone
-			const expDate = new Date();
+			let firstname = document.getElementById("firstname").value;
+			let email = document.getElementById("email").value;
+			document.cookie = `firstname=${firstname.value}`;
+			document.cookie = `email=${email.value}`;
+
+			let expDate = new Date();
 			expDate.setTime(expDate.getTime() + (10 * 24 * 60 * 60 * 1000));
 			var expire = `expires="${expDate.toUTCString()}`;
 
@@ -22,6 +22,7 @@
 			`${expire};path=/`;
 			document.cookie = `email=${email}`;
 			`${expire};path=/`;
+			showWelcomeMessageOrForm();
 		}
 
 		function showCookies() {
@@ -43,56 +44,59 @@
 		}
 
 		function showForm() {
-			const element = document.getElementById('welcome');
-			if (element) {
-				// Remmove form
-				element.innerHTML() = '';
-			}
-			//Show form
-			document.getElementById("form").style.display = "block";
+			let wlcm = document.getElementById("welcome");
+			let form = document.getElementById("form");
+			wlcm.remove();
+			form.style.display = "block";
 		}
 
 		function hideForm() {
 			// Hide form
-			document.getElementById("form").style.display = "none";
+			let form =document.querySelector("form");
+			style.display = "none";
 		}
 
 		function deleteCookiesAndShowForm() {
 			// Delete cookies
 			// Show form
-			document.cookie = "firstname=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-			document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+			cookies.remove('firsname');
+			cookies.remove('email');
+			cookies.remove('expire');
 			showForm();
 		}
 
 		function showWelcomeMessageOrForm() {
-			// check for cookie
-			if (!document.cookie) {
+			let firsname = getCookie('firstname');
+			if (firsname == "") {
 				showForm();
 			} else {
 				// adds h1 elem and text w/style
-				const new_h = document.createElement('h1');
-				new_p.innerHTML = `Welcome ${getcookie('firstname')}
-				<a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px;"
+				let new_h = document.createElement('h1');
+				new_h.innerHTML = `Welcome ${getCookie('firstname')}
+				<a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px; line-style-type: none;"
 					 onclick="deleteCookiesAndShowForm(); showForm();">(logout)</a>`
-				const welcome = document.getElementById('welcome');
-				welcome.appendChild(new_h);
+				document.body.appendChild(new_h);
+				hideForm();
+
 
 			}
+
 		}
+
 	</script>
 </head>
 
 <body>
-	<div>
+	<div id="form">
 		<h1>Login to the website</h1>
 		<input type="text" id="firstname" placeholder="Firstname">
 		<input type="text" id="email" placeholder="Email">
 		<button type="button" onclick="setCookies()">Log me in</button>
+	</div>
+	<!-- <div>
 		<h1>Cookies</h1>
 		<button type="button" onclick="showCookies()">Show the cookies</button>
-	</div>
-	<div id="welcome">text test</div>
+	</div> -->
 
 </body>
 
