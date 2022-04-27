@@ -46,22 +46,35 @@
 		function showForm() {
 			let wlcm = document.getElementById("welcome");
 			let form = document.getElementById("form");
-			wlcm.remove();
-			form.style.display = "block";
+			if (form.style.display === 'none') {
+				// 👇️ this SHOWS the form
+				form.style.display = 'block';
+				} else {
+				// 👇️ this HIDES the form
+				form.style.display = 'none';
+			}
+
 		}
 
 		function hideForm() {
 			// Hide form
-			let form =document.querySelector("form");
-			style.display = "none";
-		}
+			const form = document.getElementById('form');
+
+			if (form.style.display === 'none') {
+				// 👇️ this SHOWS the form
+				form.style.display = 'block';
+				} else {
+				// 👇️ this HIDES the form
+				form.style.display = 'none';
+			}
+		};
+
 
 		function deleteCookiesAndShowForm() {
 			// Delete cookies
 			// Show form
-			cookies.remove('firsname');
-			cookies.remove('email');
-			cookies.remove('expire');
+			document.cookie = 'firstname=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+			document.cookie = 'email=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 			showForm();
 		}
 
@@ -74,7 +87,7 @@
 				let new_h = document.createElement('h1');
 				new_h.innerHTML = `Welcome ${getCookie('firstname')}
 				<a href="#" style="font-weight: normal; font-style: italic; margin-left: 10px; line-style-type: none;"
-					 onclick="deleteCookiesAndShowForm(); showForm();">(logout)</a>`
+					 onclick="deleteCookiesAndShowForm();;">(logout)</a>`
 				document.body.appendChild(new_h);
 				hideForm();
 
@@ -93,10 +106,10 @@
 		<input type="text" id="email" placeholder="Email">
 		<button type="button" onclick="setCookies()">Log me in</button>
 	</div>
-	<!-- <div>
+	<div>
 		<h1>Cookies</h1>
 		<button type="button" onclick="showCookies()">Show the cookies</button>
-	</div> -->
+	</div>
 
 </body>
 
