@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 5</title>
+	 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+</head>
+<body>
+	<script>
+		let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+		function addItemToCart(item) {
+			window.localStorage.setItem("key", true);
+		}
+
+		function createStore() {
+			const ul = document.createElement('ul');
+
+			for (let item of availableItems) {
+				let listItem = document.createElement('li');
+				listItem.innerHTML = item;
+				listItem.addEventListener('click', () => addItemToCart(item));
+				ul.appendChild(listItem);
+			}
+			document.body.appendChild(ul);
+			};
+
+		function displayCart() {
+			let cartItems = localStorage.length;
+			if (cartItems)  {
+				p = document.createElement('p');
+				p.innerHTML = `You previously had ${cartItems} items in your cart`;
+				document.body.appendChild(p);
+			}
+		};
+
+		if (typeof(Storage) !== 'undefined') {
+			createStore();
+			displayCart();
+		} else {
+		alert('Sorry, your browser does not support Web storage. Try again with a better one.');
+		};
+	</script>
+</body>
+</html>
+
