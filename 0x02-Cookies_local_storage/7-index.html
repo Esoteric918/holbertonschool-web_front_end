@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+		const getCartFromStorage = () =>  JSON.parse(sessionStorage.getItem("cart")) || {};
+
+		function removeItemFromCart(item) {
+			const myCart = getCartFromStorage();
+
+			myCart[item].remove();
+
+			window.sessionStorage.setItem('cart', JSON.stringify(myCart));
+			displayCart();
+		}
+
+		function updateCart() {
+			const cartList = document.createElement('ul');
+			const cartContainer = document.getElementById('cartContainer');
+			const storageCart = getCartFromStorage();
+			const cartSize = Object.keys(storageCart).length;
+
+			const clearList = document.createElement('li');
+			clearList.innerText = 'Clear my cart';
+			clearList.addEventListener('click', () => clearCart());
+
+			if (cartSize > 0) {
+				cartList.appendChild(clearList);
+
+				for (const item in storageCart) {
+				const listItem = document.createElement('li');
+				listItem.innerText = `${item} x ${storageCart[item]} `;
+
+				const removeItem = document.createElement('span');
+				removeItem.innerText = '(remove)';
+				removeItem.addEventListener('click', () => removeItemfromCart(item));
+
+				listItem.appendChild(removeItem);
+				cartList.appendChild(listItem);
+				}
+			} else {
+				cartList.appendChild(
+				document.createElement('li').appendChild(
+					document.createTextNode('Your cart is empty')
+				).parentNode
+				);
+			}
+		}
+		function addItemToCart() {
+			let cart = getCartFromStorage();
+
+			if(cart && cart[item]) {
+				cart[item] += 1;
+			} else {
+				cart[item] = 1;
+			}
+			sessionStorage.setItem('cart', JSON.stringify(cart));
+			displayCart();
+		}
+
+
+		const clearCart = () => sessionStorage.clear() && displayCart();
+		// different syntax for clear storage func
+		// function clearCart() {
+		// 	sessionStorage.clear();
+		// 	displayCart();
+		// };
+
+		function createStore() {
+			var hTag = document.createElement('h2');
+			hTag.innerHTML = "Available products:";
+			document.body.appendChild('h2');
+
+			newul = document.createElement('ul');
+			document.body.appendChild(newul);
+
+			for (let i = 0; i < addItemToCart.length; ++i) {
+				var items = document.createElement('li');
+				items.innerHTML = availableItems[i];
+				items.addEventListener('click', function () {
+						addItemToCart(this.innerHTML);
+				});
+				document.querySelector('ul');
+			}
+		}
+
+		function displayCart() {
+			var hTag = document.createElement(h2);
+			hTtag.innerHTML = "Your cart:";
+			document.body.appendChild('h2');
+
+			var newDiv = document.getElementById('#cart-div');
+			if (!newDiv) {
+				var newDiv = document.createElement('div');
+				newDiv.setAttribute('id', 'cart-div');
+				document.body.appendChild(newDiv);
+			} else {
+				newDiv.innerHTML = '';
+			}
+			updateCart();
+		}
+
+
+
+		if (typeof(sessionStorage) !== 'undefined') {
+			createStore();
+			displayCart();
+		} else {
+			alert('Sorry, your browser does not support Web storage. Try again with a better one.');
+		}
+	</script>
+</body>
+</html>

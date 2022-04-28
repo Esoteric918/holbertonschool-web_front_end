@@ -9,11 +9,9 @@
 </head>
 <body>
 	<script>
-		let availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+		const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
 
-		function addItemToCart(item) {
-			window.localStorage.setItem("key", true);
-		}
+        const addItemToCart = (item) => sessionStorage.setItem(item, true);
 
 		function createStore() {
 			const ul = document.createElement('ul');
@@ -28,7 +26,7 @@
 			};
 
 		function displayCart() {
-			let cartItems = localStorage.length;
+			let cartItems = sessionStorage.length;
 			if (cartItems)  {
 				p = document.createElement('p');
 				p.innerHTML = `You previously had ${cartItems} items in your cart`;
